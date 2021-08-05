@@ -38,3 +38,27 @@ M M R M M R M R R M
 ```
 
 
+## HOW IT WORKS
+The program is implemented in an object oriented way in a class named `MarsPlateau`. `MarsPlateau` takes only 1 parameter - the number of rovers.
+
+### Available methods:
+* `set_plateau_shape` 
+    - changes the shape/size of the plateau. It takes in 1 parameter - `plateau_shape`(in format `"5 5"`).
+* `get_plateau_shape` 
+    - returns shape of plateau.
+* `set_rover_coords` 
+    - changes the position of rover. It takes in 2 parameters - `rover_name` and `coords`(in format - `"1 2 N"`).
+* `get_rover_coords` 
+    - returns the rover's current position.
+* `navigate_rover` 
+    - which takes 2 parameters - `rover_name` and `commands`(in format `"L M L M L M L M M"`). It traverses the rover whose name was passed to the `rover_name` parameter, to the next point based on the command in the `commands` parameter. Accepted commands are - `"L"`, `"R"` and `"M"`.
+
+### Example:
+```python
+plateau = MarsPlateau(5) # Returns the shape of the plateau, number of rovers and their names.
+plateau.set_plateau_shape("5 5") # Changes the shape of the plateau to 5x5.
+plateau.set_rover_coords("rover_1", "1 2 N") # Sets rover_1's position to 1,2 and facing North.
+plateau.navigate_rover("rover_1", "L M L M L M L M M") # Moves rover_1 to the next point based on the commands and returns the final position and heading.
+plateau.get_rover_coords("rover_1") # Returns the rover's current position.
+plateau.get_plateau_shape() # Returns the plateau's shape.
+```
