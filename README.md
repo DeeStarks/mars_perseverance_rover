@@ -73,3 +73,8 @@ plateau.get_rover_coords("rover_1")
 # Return the plateau's shape.
 plateau.get_plateau_shape() 
 ```
+
+
+## USAGE
+- Run `./script.sh` to run the program.
+- Run `./script.sh test` to run the program with test cases.
