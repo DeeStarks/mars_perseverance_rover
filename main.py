@@ -1,15 +1,18 @@
 class MarsPlateau:
-    def __init__(self, plateau_shape, no_of_rovers):
-        self.plateau_shape = tuple(map(int, plateau_shape.split()))
+    def __init__(self, no_of_rovers):
+        self.plateau_shape = tuple([0, 0])
         self.no_of_rovers = int(no_of_rovers)
         self.rover_names = [f"rover_{no+1}" for no in range(self.no_of_rovers)]
         self.__cardinal_directions = ["N", "E", "S", "W"]
         self.__rovers_info = {rover: {"x_axis": 0, "y_axis": 0, "direction": self.__cardinal_directions[0]} for rover in self.rover_names}
         self.__coord_commands = ["L", "R", "M"]
 
-    def change_plateau_shape(self, plateau_shape):
+    def set_plateau_shape(self, plateau_shape):
         self.plateau_shape = tuple(map(int, plateau_shape.split()))
-        return f"Changed Plateau Shape to: {self.plateau_shape}"
+        return f"Changed Plateau Shape to: {x+' ' for x in self.plateau_shape}"
+
+    def get_plateau_shape(self):
+        return f"{x+' ' for x in self.plateau_shape}"
 
     def get_rover_coords(self, rover_name):
         try:
@@ -81,9 +84,9 @@ class MarsPlateau:
     def __str__(self):
         return f"==============\n\nPLATEAU SHAPE: {self.plateau_shape}\nNUMBER OF ROVERS: {self.no_of_rovers}\nROVERS: {self.rover_names}\n\n=============="
 
-# if __name__ == "__main__":
-#     plateau = MarsPlateau("5 5", 5)
-#     plateau.set_rover_coords("rover_1", "3 3 E")
-#     print(plateau.navigate_rover("rover_1", "M M R M M R M R R M"))
-#     print(plateau.get_rover_coords("rover_2"))
-#     print(plateau.get_rover_coords("rover_3"))
+if __name__ == "__main__":
+    plateau = MarsPlateau(5)
+    plateau.set_rover_coords("rover_1", "3 3 E")
+    print(plateau.navigate_rover("rover_1", "M M R M M R M R R M"))
+    print(plateau.get_rover_coords("rover_2"))
+    print(plateau.get_rover_coords("rover_3"))
