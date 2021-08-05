@@ -55,10 +55,21 @@ The program is implemented in an object oriented way in a class named `MarsPlate
 
 ### Example:
 ```python
-plateau = MarsPlateau(5) # Returns the shape of the plateau, number of rovers and their names.
-plateau.set_plateau_shape("5 5") # Changes the shape of the plateau to 5x5.
-plateau.set_rover_coords("rover_1", "1 2 N") # Sets rover_1's position to 1,2 and facing North.
-plateau.navigate_rover("rover_1", "L M L M L M L M M") # Moves rover_1 to the next point based on the commands and returns the final position and heading.
-plateau.get_rover_coords("rover_1") # Returns the rover's current position.
-plateau.get_plateau_shape() # Returns the plateau's shape.
+# Initialize MarsPlateau. And return the shape of the plateau, number of rovers and their names.
+plateau = MarsPlateau(5)
+
+# Change the shape of the plateau to 5x5.
+plateau.set_plateau_shape("5 5")
+
+# Set a rover's position to 1,2 and facing North.
+plateau.set_rover_coords("rover_1", "1 2 N") 
+
+# Move a rover to the next point based on the commands and return the final position and heading.
+plateau.navigate_rover("rover_1", "L M L M L M L M M") 
+
+# Return a rover's current position.
+plateau.get_rover_coords("rover_1")
+
+# Return the plateau's shape.
+plateau.get_plateau_shape() 
 ```
