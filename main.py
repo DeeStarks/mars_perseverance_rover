@@ -86,11 +86,27 @@ class MarsPlateau:
     def __str__(self):
         return f"==============\n\nPLATEAU SHAPE: {self.plateau_shape}\nNUMBER OF ROVERS: {self.no_of_rovers}\nROVERS: {self.rover_names}\n\n=============="
 
-# if __name__ == "__main__":
-#     plateau = MarsPlateau(5)
-#     print(plateau)
-    # print(plateau.get_plateau_shape())
-    # plateau.set_rover_coords("rover_1", "3 3 E")
-    # print(plateau.navigate_rover("rover_1", "M M R M M R M R R M"))
-    # print(plateau.get_rover_coords("rover_2"))
-    # print(plateau.get_rover_coords("rover_3"))
+if __name__ == "__main__":
+    rovers = input("Enter the number of rovers: ")
+    while not rovers.isdigit():
+        print("Invalid input. Expected: number of rovers")
+        rovers = input("Enter the number of rovers: ")
+    plateau = MarsPlateau(rovers)
+
+    shape = input("Enter the shape of the plateau (e.g. '5 5'): ")
+    while not shape.replace(' ', '').isdigit() or not shape.split().__len__() == 2:
+        print("Invalid input. Expected: shape of the plateau in format 'x y'")
+        shape = input("Enter the shape of the plateau (e.g. '5 5'): ")
+    plateau.set_plateau_shape("5 5")
+
+    rover_name = input("Enter a rover name to issue commands (e.g. 'rover_1'): ")
+    while rover_name not in plateau.rover_names:
+        print("Rover does not exist. Available Rovers: ", plateau.rover_names)
+        rover_name = input("Enter a rover name to issue a command (e.g. 'rover_1'): ")
+    coords = input(f"Enter the coordinates of {rover_name} (e.g. '1 2 N'): ")
+    plateau.set_rover_coords(rover_name, coords)
+
+    commands = input(f"Enter the commands to navigate {rover_name} (e.g. 'L M L M L M L M M'): ")
+    print("\n")
+    print(plateau.navigate_rover(rover_name, commands))
+    exit()
