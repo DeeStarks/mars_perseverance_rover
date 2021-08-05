@@ -28,6 +28,8 @@ class MarsPlateau:
             x, y, direction = coords.upper().split()
             if not x.isdigit() or not y.isdigit() or direction not in self.__cardinal_directions:
                 return f"Invalid coordinate. Expected: x-axis, y-axis and direction in a format like \"1 1 N\". Got: {coords}"
+            if int(x) > self.plateau_shape[0] or int(y) > self.plateau_shape[1]:
+                return f"Rover cannot move outside the plateau. Current shape/size of plateau: {x+' ' for x in self.plateau_shape}"
             self.__rovers_info[rover_name]["x_axis"] = int(x)
             self.__rovers_info[rover_name]["y_axis"] = int(y)
             self.__rovers_info[rover_name]["direction"] = direction
@@ -84,9 +86,9 @@ class MarsPlateau:
     def __str__(self):
         return f"==============\n\nPLATEAU SHAPE: {self.plateau_shape}\nNUMBER OF ROVERS: {self.no_of_rovers}\nROVERS: {self.rover_names}\n\n=============="
 
-if __name__ == "__main__":
-    plateau = MarsPlateau(5)
-    plateau.set_rover_coords("rover_1", "3 3 E")
-    print(plateau.navigate_rover("rover_1", "M M R M M R M R R M"))
-    print(plateau.get_rover_coords("rover_2"))
-    print(plateau.get_rover_coords("rover_3"))
+# if __name__ == "__main__":
+#     plateau = MarsPlateau(5)
+#     plateau.set_rover_coords("rover_1", "3 3 E")
+    # print(plateau.navigate_rover("rover_1", "M M R M M R M R R M"))
+    # print(plateau.get_rover_coords("rover_2"))
+    # print(plateau.get_rover_coords("rover_3"))
