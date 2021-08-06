@@ -58,7 +58,7 @@ The program is implemented in an object oriented way in a class named `MarsPlate
 # Initialize MarsPlateau. And return the shape of the plateau, number of rovers and their names.
 plateau = MarsPlateau(5)
 
-# Change the shape of the plateau to 5x5.
+# Change the shape of the plateau to 5x5 (referring to the upper-right coordinates of the plateau)
 plateau.set_plateau_shape("5 5")
 
 # Set a rover's position to 1,2 and facing North.
