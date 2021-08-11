@@ -55,7 +55,7 @@ The program is implemented in an object oriented way in a class named `MarsPlate
 
 ### Example:
 ```python
-# Initialize MarsPlateau. And return the shape of the plateau, number of rovers and their names.
+# Initialize MarsPlateau with number of rovers, passed as a parameter. 
 plateau = MarsPlateau(5)
 
 # Change the shape of the plateau to 5x5 (referring to the upper-right coordinates of the plateau)
